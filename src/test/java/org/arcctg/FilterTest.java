@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FilterTest {
     @ParameterizedTest
-    @MethodSource("provideTestCases")
+    @MethodSource("testCases")
     void testFilterByType(List<Object> input, String type, List<Object> expected) {
         List<Object> result = Filter.filter(input, type);
         assertEquals(expected, result, "Filtered result did not match the expected output.");
     }
 
-    private static Stream<Arguments> provideTestCases() {
+    private static Stream<Arguments> testCases() {
         return Stream.of(
                 Arguments.of(List.of(1, 2, "three", 4, 5, "six"), "integer", List.of(1, 2, 4, 5)),
                 Arguments.of(List.of(-1, 0, 1, 2), "integer", List.of(-1, 0, 1, 2)),
